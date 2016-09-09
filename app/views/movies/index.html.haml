@@ -1,15 +1,16 @@
-.list-title="Movies"
-	.add-new="Add new movie (to be written later)"
-	.header-row
-		.row-label="Movie Title"
-		.row-label="Dir."
-		.row-label="Year"
-		.row-label="Runtime"
-		.row-label="Tags"
-	-Movies.all.each do |movie|
-		.data-row
-			.data-cell="#{movie.movie_title}"
-			.data-cell="TBD"
-			.data-cell="#{movie.year}"
-			.data-cell="#{movie.runtime}"
-			.data-cell="TBDs"
+.list_title
+	%h1="Movies"
+.add-new="Add new movie (to be written later)"
+.header-row
+	.row-label="Movie Title"
+	.row-label="Dir."
+	.row-label="Year"
+	.row-label="Runtime"
+	.row-label="Tags"
+-Movie.all.each do |movie|
+	.data-row
+		.data-cell="#{movie.movie_title}"
+		.data-cell="TBD"
+		.data-cell="#{movie.year}"
+		.data-cell="#{movie.runtime}"
+		.data-cell="TBDs"

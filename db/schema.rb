@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909200202) do
+ActiveRecord::Schema.define(version: 20169909213106) do
 
   create_table "actors", force: :cascade do |t|
     t.string   "first_name"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20160909200202) do
     t.boolean  "best_picture_winner"
     t.boolean  "best_picture_nominee"
     t.integer  "runtime"
+    t.boolean  "seen"
+    t.boolean  "foreign"
   end
 
   create_table "tags", force: :cascade do |t|
