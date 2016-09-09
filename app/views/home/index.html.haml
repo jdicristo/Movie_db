@@ -1,0 +1,12 @@
+#center-container
+	#logo-container
+		=image_tag "dice.jpg"
+		#app-title="Movie Dice"
+	#home-buttons
+		#top-row.home-row
+			=link_to "Movies", movies_path, {id: "movies-btn", class: "home-btn"}
+			#actors-btn.home-btn="Actors"
+			#directors-btn.home-btn="Directors"
+			#tags-btn.home-btn="Tags"
+		#second-row.home-row
+			#dice-btn.home-btn.alt="Roll the Dice"
