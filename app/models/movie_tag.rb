@@ -1,0 +1,2 @@
+class MovieTag < ApplicationRecord
+end
