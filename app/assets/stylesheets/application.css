@@ -17,3 +17,37 @@
 body {
 	font-family: "Helvetica";
 }
+
+h1 {
+	color: #064F40;
+	font-size: 40px;
+	font-weight: 500;
+}
+
+.list_title {
+	text-align: center;
+}
+
+table.list {
+	border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+table.list th {
+	background: #064F40;
+	border: 2px solid #21B6A8;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	color: #21B6A8;
+	padding: 20px;
+}
+
+table.list td {
+	background: #21B6A8;
+	border: 1px solid #064F40;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	color: #064F40;
+	padding: 15px;
+	vertical-align: top;
+}

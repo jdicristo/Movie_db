@@ -1,16 +1,27 @@
 .list_title
 	%h1="Movies"
-.add-new="Add new movie (to be written later)"
-.header-row
-	.row-label="Movie Title"
-	.row-label="Dir."
-	.row-label="Year"
-	.row-label="Runtime"
-	.row-label="Tags"
--Movie.all.each do |movie|
-	.data-row
-		.data-cell="#{movie.movie_title}"
-		.data-cell="TBD"
-		.data-cell="#{movie.year}"
-		.data-cell="#{movie.runtime}"
-		.data-cell="TBDs"
+=link_to "Add new movie", new_movie_path
+%table.list{cellspacing: 0}
+	%tr.header_row
+		%th="Movie Title"
+		%th="Dir."
+		%th="Year"
+		%th="Runtime"
+		%th="Best Picture Winner"
+		%th="Best Picture Nominee"
+		%th="Seen"
+		%th="Foreign"
+		%th="Tags"
+	-Movie.all.each do |movie|
+		%tr.data_row
+			%td.data_cell="#{movie.movie_title}"
+			%td.data_cell
+				-MovieDirector.where(movie_id: movie.id).each do |director|
+					%div="#{Director.find(director.director_id).first_name} #{Director.find(director.director_id).last_name}"
+			%td.data_cell="#{movie.year}"
+			%td.data_cell="#{movie.runtime} minutes"
+			%td.data_cell=movie.best_picture_winner ? "Yes" : "No"
+			%td.data_cell=movie.best_picture_nominee ? "Yes" : "No"
+			%td.data_cell=movie.seen ? "Yes" : "No"
+			%td.data_cell=movie.foreign ? "Yes" : "No"
+			%td.data_cell="TBDs"

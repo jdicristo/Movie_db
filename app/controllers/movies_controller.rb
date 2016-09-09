@@ -1,6 +1,4 @@
-class MoviesController < ApplicationController
-	layout "list_view"
-	
+class MoviesController < ApplicationController	
 	def index
 
 	end
