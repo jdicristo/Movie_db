@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20169909213106) do
     t.boolean  "best_picture_nominee"
     t.integer  "runtime"
     t.boolean  "seen"
-    t.boolean  "foreign"
+    t.boolean  "subtitles"
     t.integer  "rating_id"
   end
 

@@ -11,7 +11,7 @@
 		%th="Best Picture Winner"
 		%th="Best Picture Nominee"
 		%th="Seen"
-		%th="Foreign"
+		%th="Subtitles"
 		%th="Tags"
 	-Movie.all.each do |movie|
 		%tr.data_row
@@ -25,5 +25,5 @@
 			%td.data_cell=movie.best_picture_winner ? "Yes" : "No"
 			%td.data_cell=movie.best_picture_nominee ? "Yes" : "No"
 			%td.data_cell=movie.seen ? "Yes" : "No"
-			%td.data_cell=movie.foreign ? "Yes" : "No"
+			%td.data_cell=movie.subtitles ? "Yes" : "No"
 			%td.data_cell="TBDs"
