@@ -1,7 +1,14 @@
 #random_movie.half.left
 	.center
 		#random_movie_text="Your random movie is"
-		#random_movie_title="#{@movie.movie_title}"
+		-if @movie
+			#random_movie_title="#{@movie.movie_title}"
+		-else
+			=image_tag "ralph_wiggum.jpg", {id: "nose_pick"}
+			#nose_pick_text="Stop being picky"
+			#nose_pick_sub
+				You filtered out all of your movies. Lower your standards a little bit there, 
+				%span.pink="princess."
 #filters.half.right
 	#filters_container.center
 		%h1="Filters"
@@ -11,5 +18,20 @@
 				=select_tag "rating-filter", options_from_collection_for_select(Rating.all, "id", "rating"), include_blank: "Any"
 			.filter
 				Director: 
-				=select_tag "director-filter", options_from_collection_for_select(Director.all, "id", "first_name", "last_name"), include_blank: "Any"
+				=select_tag "director-filter", options_from_collection_for_select(Director.all, "id", "first_name"), include_blank: "Any"
+			.filter
+				Watch a movie with subtitles?
+				.radio_list
+					.radio_list_item
+						=radio_button "post", "subtitles", "0", {checked: true}
+						I don't care either way. I'm cool like that.
+					.radio_list_item
+						=radio_button "post", "subtitles", "1"
+						READING IS FOR NERDS
+					.radio_list_item
+						=radio_button "post", "subtitles", "2"
+						Have I told you about my semester of study abroad?
+			.filter
+				Year: 
+				=select_tag "year-filter", options_for_select(@decade_array.collect {|d| [ d[:decade], d[:id] ] }), include_blank: "Any"
 .clear
