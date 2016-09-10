@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 20169909213106) do
     t.integer  "runtime"
     t.boolean  "seen"
     t.boolean  "foreign"
+    t.integer  "rating_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.string   "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|

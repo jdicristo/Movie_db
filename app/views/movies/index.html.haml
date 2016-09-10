@@ -6,6 +6,7 @@
 		%th="Movie Title"
 		%th="Dir."
 		%th="Year"
+		%th="Rating"
 		%th="Runtime"
 		%th="Best Picture Winner"
 		%th="Best Picture Nominee"
@@ -19,6 +20,7 @@
 				-MovieDirector.where(movie_id: movie.id).each do |director|
 					%div="#{Director.find(director.director_id).first_name} #{Director.find(director.director_id).last_name}"
 			%td.data_cell="#{movie.year}"
+			%td.data_cell="#{Rating.find(movie.rating_id).rating}"
 			%td.data_cell="#{movie.runtime} minutes"
 			%td.data_cell=movie.best_picture_winner ? "Yes" : "No"
 			%td.data_cell=movie.best_picture_nominee ? "Yes" : "No"

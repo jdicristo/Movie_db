@@ -22,7 +22,20 @@ h1 {
 	color: #064F40;
 	font-size: 40px;
 	font-weight: 500;
+	margin: 25px 0;
 }
+
+h2 {
+	color: #21B6A8;
+	font-size: 30px;
+	font-weight: 500;
+}
+
+.left { float: left; }
+.right { float: right; }
+.clear { clear: both; }
+
+.center { text-align: center; }
 
 .list_title {
 	text-align: center;
