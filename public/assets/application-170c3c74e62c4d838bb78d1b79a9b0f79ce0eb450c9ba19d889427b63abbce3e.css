@@ -1,0 +1,61 @@
+/* line 8, /Users/joshuadicristo/workspace/movie_db/app/assets/stylesheets/home.scss */
+#logo-container {
+  margin: 0 auto;
+  width: 50%;
+}
+/* line 12, /Users/joshuadicristo/workspace/movie_db/app/assets/stylesheets/home.scss */
+#logo-container img {
+  display: block;
+  margin: 0 auto;
+}
+/* line 17, /Users/joshuadicristo/workspace/movie_db/app/assets/stylesheets/home.scss */
+#logo-container #app-title {
+  font-size: 40px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* line 24, /Users/joshuadicristo/workspace/movie_db/app/assets/stylesheets/home.scss */
+.home-row {
+  text-align: center;
+}
+/* line 27, /Users/joshuadicristo/workspace/movie_db/app/assets/stylesheets/home.scss */
+.home-row:first-child {
+  margin: 30px 0;
+}
+/* line 31, /Users/joshuadicristo/workspace/movie_db/app/assets/stylesheets/home.scss */
+.home-row .home-btn {
+  background-color: #21B6A8;
+  border: 3px solid #064F40;
+  border-radius: 5px;
+  color: #064F40;
+  display: inline-block;
+  padding: 15px 30px;
+  text-decoration: none;
+}
+/* line 40, /Users/joshuadicristo/workspace/movie_db/app/assets/stylesheets/home.scss */
+.home-row .home-btn.alt {
+  background-color: #064F40;
+  border-color: #21B6A8;
+  color: #21B6A8;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+body {
+	font-family: "Helvetica";
+}
