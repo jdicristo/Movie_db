@@ -1,6 +1,6 @@
 .list_title
 	%h1="Movies"
-=link_to "Add new movie", new_movie_path
+=link_to "+ Add new movie", new_movie_path, id: "add_movie_btn"
 %table.list{cellspacing: 0}
 	%tr.header_row
 		%th="Movie Title"
@@ -14,16 +14,17 @@
 		%th="Subtitles"
 		%th="Tags"
 	-Movie.all.each do |movie|
-		%tr.data_row
-			%td.data_cell="#{movie.movie_title}"
-			%td.data_cell
+		%tr
+			%td
+				=link_to "#{movie.movie_title}", edit_movie_path(movie.id)
+			%td
 				-MovieDirector.where(movie_id: movie.id).each do |director|
 					%div="#{Director.find(director.director_id).first_name} #{Director.find(director.director_id).last_name}"
-			%td.data_cell="#{movie.year}"
-			%td.data_cell="#{Rating.find(movie.rating_id).rating}"
-			%td.data_cell="#{movie.runtime} minutes"
-			%td.data_cell=movie.best_picture_winner ? "Yes" : "No"
-			%td.data_cell=movie.best_picture_nominee ? "Yes" : "No"
-			%td.data_cell=movie.seen ? "Yes" : "No"
-			%td.data_cell=movie.subtitles ? "Yes" : "No"
-			%td.data_cell="TBDs"
+			%td="#{movie.year}"
+			%td="#{Rating.find(movie.rating_id).rating}"
+			%td="#{movie.runtime} minutes"
+			%td=movie.best_picture_winner ? "Yes" : "No"
+			%td=movie.best_picture_nominee ? "Yes" : "No"
+			%td=movie.seen ? "Yes" : "No"
+			%td=movie.subtitles ? "Yes" : "No"
+			%td="TBDs"

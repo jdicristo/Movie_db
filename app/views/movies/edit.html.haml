@@ -1,0 +1,29 @@
+%h1#movie_header="Edit Movie"
+=form_for @movie, html: { class: "center", id: "new_movie" } do |m|
+	.attributes
+		.attribute
+			.one_quarter="Title"
+			=m.text_field :movie_title, class: "one_half"
+		.attribute
+			.one_quarter="Year"
+			=m.number_field :year, in: 1888..Time.now.year, class: "one_quarter"
+		.attribute
+			.one_quarter="Runtime (minutes)"
+			=m.number_field :runtime, min: 0, class: "one_quarter"
+		.attribute
+			.one_quarter="Rating"
+			=m.select :rating_id, options_for_select(Rating.all.collect {|r| [r[:rating],r[:id]]}), class: "one_quarter"
+		.attribute
+			.one_half="Have you seen it already?"
+			=m.check_box :seen, class: "one_quarter"
+		.attribute
+			.one_half="Does it have subtitles?"
+			=m.check_box :subtitles, class: "one_quarter"
+		.attribute
+			.one_half="Was it nominated for Best Picture?"
+			=m.check_box :best_picture_nominee, class: "one_quarter"
+		.attribute
+			.one_half="Did it win Best Picture?"
+			=m.check_box :best_picture_winner, class: "one_quarter"
+	.form_button
+		=m.submit "Save", class: "btn", id: "save_movie"
