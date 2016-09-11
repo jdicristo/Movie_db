@@ -2,8 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#new_movie_header {
+$dark-teal: #064F40;
+$light-teal: #21B6A8;
+
+#movie_header {
 	text-align: center;
+}
+
+#add_movie_btn {
+	color: $dark-teal;
+	display: inline-block;
+	margin-bottom: 10px;
 }
 
 #new_movie {
@@ -27,6 +36,7 @@
 
 	input[type="checkbox"] {
 		height: 20px;
+		margin-left: -8px;
 		width: 20px;
 	}
 

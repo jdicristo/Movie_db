@@ -1,0 +1,51 @@
+// Place all the styles related to the random controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$dark-teal: #064F40;
+$light-teal: #21B6A8;
+
+#random_movie {
+	border-right: 1px solid #D3D3D3;
+
+	#nose_pick { 
+		margin-bottom: 20px;
+		width: 20%;
+	}
+
+	#nose_pick_text {
+		font-size: 30px;
+		margin-bottom: 5px;
+	}
+
+	.pink { color: #FF69B4; }
+
+	#random_movie_text {
+		color: $light-teal;
+		font-size: 60px;
+		font-weight: 900;
+		margin: 25px 0 80px 0;
+	}
+}
+
+#filters_container {
+	margin-top: 30px;
+	width: 60%;
+
+	#controls {
+		text-align: left;
+
+		.filter {
+			margin-bottom: 20px;
+
+			.radio_list {
+				display: block;
+				margin-left: 15px;
+			}
+		}
+	}
+}
+
+.half {
+	width: 49.9%
+}

@@ -6,7 +6,20 @@ class MoviesController < ApplicationController
 	end
 
 	def create
-		Movie.create({movie_title: params[:movie][:movie_title], year: params[:movie][:year], runtime: params[:movie][:runtime], rating_id: params[:movie][:rating_id], seen: params[:movie][:seen], subtitles: params[:movie][:aubtitles], best_picture_nominee: params[:movie][:best_picture_nominee], best_picture_winner: params[:movie][:best_picture_winner]});
+		Movie.create(params[:movie]);
 		redirect_to movies_path
+	end
+
+	def edit
+		@movie = Movie.find(params[:id])
+	end
+
+	def update
+		Movie.find(params[:id]).update!(movie_params)
+		redirect_to movies_path
+	end
+
+	def movie_params
+		params.require(:movie).permit(:movie_title, :year, :best_picture_winner, :best_picture_nominee, :runtime, :seen, :subtitles, :rating_id)
 	end
 end

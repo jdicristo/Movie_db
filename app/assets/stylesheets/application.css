@@ -36,9 +36,10 @@ h2 {
 .right { float: right; }
 .clear { clear: both; }
 
-.save_btn {
+.btn {
 	background-color: #064F40;
-	border: 3px solid #21B6A8;
+	border: none;
+	/*border: 3px solid #21B6A8;*/
 	border-radius: 5px;
 	color: #21B6A8;
 	cursor: pointer;
@@ -74,4 +75,8 @@ table.list td {
 	color: #064F40;
 	padding: 15px;
 	vertical-align: top;
+}
+
+table.list td a {
+	color: #064F40;
 }
