@@ -18,7 +18,7 @@
 			%td=link_to "#{movie.movie_title}", edit_movie_path(movie.id)
 			%td
 				-MovieDirector.where(movie_id: movie.id).each do |director|
-					%div="#{Director.find(director.director_id).first_name} #{Director.find(director.director_id).last_name}"
+					%div="#{Director.find(director.director_id).name}"
 			%td="#{movie.year}"
 			%td="#{Rating.find(movie.rating_id).rating}"
 			%td="#{movie.runtime} minutes"
