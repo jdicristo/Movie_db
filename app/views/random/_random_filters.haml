@@ -3,22 +3,22 @@
 	=form_tag filter_path, method: :get, id: "controls" do
 		.filter
 			Rating: 
-			=select_tag "filter[rating]", options_from_collection_for_select(Rating.all, "id", "rating"), include_blank: "Any"
+			=select_tag "filter[rating]", options_from_collection_for_select(Rating.all, "id", "rating", params[:rating]), include_blank: "Any"
 		.filter
 			Director: 
-			=select_tag "filter[director]", options_from_collection_for_select(Director.all, "id", "name"), include_blank: "Any"
+			=select_tag "filter[director]", options_from_collection_for_select(Director.all, "id", "name", params[:director]), include_blank: "Any"
 		.filter
 			Subtitles?
 			.radio_list
 				.radio_list_item
-					=radio_button "filter", "subtitles", "0", {checked: true}
-					I don't care either way. I'm cool like that.
+					=radio_button "filter", "subtitles", "0"
+					Don't care
 				.radio_list_item
 					=radio_button "filter", "subtitles", "1"
-					READING IS FOR NERDS
+					No
 				.radio_list_item
 					=radio_button "filter", "subtitles", "2"
-					Have I told you about my semester of study abroad?
+					Yes
 		.filter
 			Year: 
 			=select_tag "filter[year]", options_for_select(@decade_array.collect {|d| [ d[:decade], d[:id] ] }), include_blank: "Any"
@@ -26,12 +26,12 @@
 			A movie you've already seen?
 			.radio_list
 				.radio_list_item
-					=radio_button "filter", "seen", "0", {checked: true}
-					Whatever, man. One day we all die, anyway.
+					=radio_button "filter", "seen", "0"
+					Don't care
 				.radio_list_item
 					=radio_button "filter", "seen", "1"
-					I want to expand my horizons!
+					No
 				.radio_list_item
 					=radio_button "filter", "seen", "2"
-					Give me comfort food.
+					Yes
 		=submit_tag "Roll the Dice"

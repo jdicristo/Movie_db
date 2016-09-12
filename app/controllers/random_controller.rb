@@ -1,13 +1,51 @@
 class RandomController < ApplicationController
 	def show
-		logger.debug(params)
+		logger.debug(params.permit(:rating, :director, :year, :subtitles, :seen))
 		get_random_movie
 		get_date_range
 	end
 
 	def get_random_movie
 		movie_list = Movie.all
+		movie_list = filter_director(movie_list)
+		movie_list = filter_rating(movie_list)
+		movie_list = filter_year(movie_list)
+		movie_list = filter_subtitles(movie_list)
+		movie_list = filter_seen(movie_list)
 		@movie = movie_list.count == 0 ? false : movie_list[rand(0..movie_list.count-1)]
+	end
+
+	def filter_director(list)
+		list
+	end
+	
+	def filter_rating(list)
+		(params[:rating].nil? || params[:rating].empty?) ? list : list.where(rating_id: params[:rating].to_i)
+	end
+
+	def filter_year(list)
+		list
+	end
+		
+	def filter_subtitles(list)
+		if params[:subtitles] == "1"
+			list.where(subtitles: false)
+		elsif params[:subtitles] == "2"
+			list.where(subtitles: true)
+		else
+			list
+		end
+
+	end
+
+	def filter_seen(list)
+		if params[:subtitles] == "1"
+			list.where(subtitles: false)
+		elsif params[:subtitles] == "2"
+			list.where(subtitles: true)
+		else
+			list
+		end
 	end
 
 	def get_date_range
