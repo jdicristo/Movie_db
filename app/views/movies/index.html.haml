@@ -1,6 +1,10 @@
 .list_title
 	%h1="Movies"
 =link_to "+ Add new movie", new_movie_path, id: "add_movie_btn"
+%select#movie_order
+	%option{value: 1}="Alphabetical"
+	%option{value: 2}="Year"
+	%option{value: 3}="Runtime"
 %table.list{cellspacing: 0}
 	%tr.header_row
 		%th="Movie Title"
@@ -12,11 +16,10 @@
 		%th="Best Picture Nominee"
 		%th="Seen"
 		%th="Subtitles"
-		%th="Tags"
-	-Movie.all.each do |movie|
+		%th
+	-@movies.each do |movie|
 		%tr
-			%td
-				=link_to "#{movie.movie_title}", edit_movie_path(movie.id)
+			%td=link_to "#{movie.movie_title}", edit_movie_path(movie.id)
 			%td
 				-MovieDirector.where(movie_id: movie.id).each do |director|
 					%div="#{Director.find(director.director_id).first_name} #{Director.find(director.director_id).last_name}"
@@ -27,4 +30,4 @@
 			%td=movie.best_picture_nominee ? "Yes" : "No"
 			%td=movie.seen ? "Yes" : "No"
 			%td=movie.subtitles ? "Yes" : "No"
-			%td="TBDs"
+			%td=link_to 'Delete', movie,  method: :delete, data: { confirm: 'Are you sure?' }
