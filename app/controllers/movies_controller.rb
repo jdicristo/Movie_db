@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController	
 	def index
-		@movies = Movie.all
+		@movies = Movie.all.sort_by { |m| m[:movie_title].sub(/^the /i,"").downcase }
 	end
 
 	def new
