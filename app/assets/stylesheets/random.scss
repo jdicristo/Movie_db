@@ -8,6 +8,11 @@ $light-teal: #21B6A8;
 #random_movie {
 	border-right: 1px solid #D3D3D3;
 
+	.movie_poster {
+		margin: 0 25%;
+		width: 50%;
+	}
+
 	#nose_pick { 
 		margin-bottom: 20px;
 		width: 20%;
@@ -24,7 +29,8 @@ $light-teal: #21B6A8;
 		color: $light-teal;
 		font-size: 60px;
 		font-weight: 900;
-		margin: 25px 0 80px 0;
+		margin: 25px 0 25px 0;
+		text-align: center;
 	}
 }
 
