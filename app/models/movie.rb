@@ -22,7 +22,7 @@ class Movie < ApplicationRecord
 		directors
 	end
 
-	def director?(director_id)
+	def director_exists?(director_id)
 		director_arr.include?(Director.find(director_id))
 	end
 
