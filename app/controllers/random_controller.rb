@@ -15,20 +15,16 @@ class RandomController < ApplicationController
 	end
 
 	def filter_director(list)
-		return list if param_present(:director)
-		ml = []
-		list.each do |movie|
-			ml.push(movie) if movie.director?(params[:director])
-		end
-		ml
+		list
+		#param_present(:director) ? list.joins(MovieDirector.all).where(director_id: params[:director]) : list
 	end
 	
 	def filter_rating(list)
-		param_present(:rating) ? list : list.where(rating_id: params[:rating].to_i)
+		param_present(:rating) ? list.where(rating_id: params[:rating].to_i) : list
 	end
 
 	def filter_year(list)
-		list
+		param_present(:year) ? list.where("year >= ?", params[:year]).where("year < ?", params[:year].to_i + 10) : list
 	end
 		
 	def filter_subtitles(list)
@@ -54,8 +50,10 @@ class RandomController < ApplicationController
 
 	def get_date_range
 		movies_by_year = Movie.all.order(:year)
-		first = Movie.first.year/10*10
-		last = Movie.last.year/10*10
+		first = movies_by_year.first.year/10*10
+		last = movies_by_year.last.year/10*10
+		logger.debug(first)
+		logger.debug(last)
 
 		@decade_array = []
 		(first..last).step(10) do |decade|
@@ -64,7 +62,7 @@ class RandomController < ApplicationController
 	end
 
 	def param_present(p)
-		params[p].nil? || params[p].empty?
+		!params[p].nil? && !params[p].empty?
 	end
 
 	def filter

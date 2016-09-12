@@ -21,7 +21,7 @@
 					Yes
 		.filter
 			Year: 
-			=select_tag "filter[year]", options_for_select(@decade_array.collect {|d| [ d[:decade], d[:id] ] }), include_blank: "Any"
+			=select_tag "filter[year]", options_for_select(@decade_array.collect {|d| [ d[:decade], d[:id] ] }, params[:year]), include_blank: "Any"
 		.filter
 			A movie you've already seen?
 			.radio_list
