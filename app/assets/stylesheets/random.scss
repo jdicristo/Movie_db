@@ -14,16 +14,17 @@ $light-teal: #21B6A8;
 	}
 
 	#nose_pick { 
-		margin-bottom: 20px;
-		width: 20%;
-	}
-
-	#nose_pick_text {
-		font-size: 30px;
-		margin-bottom: 5px;
+		margin: 20px 35% 0;
+		width: 30%;
 	}
 
 	.pink { color: #FF69B4; }
+
+	#nose_pick_sub {
+		margin: 0 auto;
+		text-align: center;
+		width: 50%;
+	}
 
 	#random_movie_text {
 		color: $light-teal;
