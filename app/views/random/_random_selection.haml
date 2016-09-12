@@ -1,0 +1,15 @@
+#random_movie
+	#random_movie_text="Your random movie is"
+	-if @movie
+		-poster_url = @movie.poster
+		-if poster_url
+			=image_tag poster_url, class: 'movie_poster', alt: @movie.movie_title
+		-else
+			=image_tag "poster_unavailable.jpg", class: 'movie_poster', alt: @movie.movie_title
+			#random_movie_title="#{@movie.movie_title}"
+	-else
+		=image_tag "ralph_wiggum.jpg", {id: "nose_pick"}
+		#nose_pick_text="Stop being picky"
+		#nose_pick_sub
+			You filtered out all of your movies. Lower your standards a little bit there, 
+			%span.pink="princess."
