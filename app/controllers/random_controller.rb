@@ -1,6 +1,5 @@
 class RandomController < ApplicationController
 	def show
-		logger.debug(params.permit(:rating, :director, :year, :subtitles, :seen))
 		get_random_movie
 		get_date_range
 	end
@@ -16,11 +15,16 @@ class RandomController < ApplicationController
 	end
 
 	def filter_director(list)
-		list
+		return list if param_present(:director)
+		ml = []
+		list.each do |movie|
+			ml.push(movie) if movie.director?(params[:director])
+		end
+		ml
 	end
 	
 	def filter_rating(list)
-		(params[:rating].nil? || params[:rating].empty?) ? list : list.where(rating_id: params[:rating].to_i)
+		param_present(:rating) ? list : list.where(rating_id: params[:rating].to_i)
 	end
 
 	def filter_year(list)
@@ -57,6 +61,10 @@ class RandomController < ApplicationController
 		(first..last).step(10) do |decade|
 			@decade_array.push({"id": decade, "decade": decade.to_s+"s"})
 		end
+	end
+
+	def param_present(p)
+		params[p].nil? || params[p].empty?
 	end
 
 	def filter
