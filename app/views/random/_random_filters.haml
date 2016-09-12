@@ -1,0 +1,37 @@
+#filters_container
+	%h1="Filters"
+	=form_tag filter_path, method: :get, id: "controls" do
+		.filter
+			Rating: 
+			=select_tag "filter[rating]", options_from_collection_for_select(Rating.all, "id", "rating"), include_blank: "Any"
+		.filter
+			Director: 
+			=select_tag "filter[director]", options_from_collection_for_select(Director.all, "id", "name"), include_blank: "Any"
+		.filter
+			Subtitles?
+			.radio_list
+				.radio_list_item
+					=radio_button "filter", "subtitles", "0", {checked: true}
+					I don't care either way. I'm cool like that.
+				.radio_list_item
+					=radio_button "filter", "subtitles", "1"
+					READING IS FOR NERDS
+				.radio_list_item
+					=radio_button "filter", "subtitles", "2"
+					Have I told you about my semester of study abroad?
+		.filter
+			Year: 
+			=select_tag "filter[year]", options_for_select(@decade_array.collect {|d| [ d[:decade], d[:id] ] }), include_blank: "Any"
+		.filter
+			A movie you've already seen?
+			.radio_list
+				.radio_list_item
+					=radio_button "filter", "seen", "0", {checked: true}
+					Whatever, man. One day we all die, anyway.
+				.radio_list_item
+					=radio_button "filter", "seen", "1"
+					I want to expand my horizons!
+				.radio_list_item
+					=radio_button "filter", "seen", "2"
+					Give me comfort food.
+		=submit_tag "Roll the Dice"

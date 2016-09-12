@@ -1,54 +1,5 @@
-#random_movie.half.left
-	#random_movie_text="Your random movie is"
-	-if @movie
-		-poster_url = @movie.poster
-		-if poster_url
-			=image_tag poster_url, class: 'movie_poster', alt: @movie.movie_title
-		-else
-			=image_tag "poster_unavailable.jpg", class: 'movie_poster', alt: @movie.movie_title
-			#random_movie_title="#{@movie.movie_title}"
-	-else
-		=image_tag "ralph_wiggum.jpg", {id: "nose_pick"}
-		#nose_pick_text="Stop being picky"
-		#nose_pick_sub
-			You filtered out all of your movies. Lower your standards a little bit there, 
-			%span.pink="princess."
-#filters.half.right
-	#filters_container
-		%h1="Filters"
-		#controls
-			.filter
-				Rating: 
-				=select_tag "rating-filter", options_from_collection_for_select(Rating.all, "id", "rating"), include_blank: "Any"
-			.filter
-				Director: 
-				=select_tag "director-filter", options_from_collection_for_select(Director.all, "id", "first_name"), include_blank: "Any"
-			.filter
-				Subtitles?
-				.radio_list
-					.radio_list_item
-						=radio_button "post", "subtitles", "0", {checked: true}
-						I don't care either way. I'm cool like that.
-					.radio_list_item
-						=radio_button "post", "subtitles", "1"
-						READING IS FOR NERDS
-					.radio_list_item
-						=radio_button "post", "subtitles", "2"
-						Have I told you about my semester of study abroad?
-			.filter
-				Year: 
-				=select_tag "year-filter", options_for_select(@decade_array.collect {|d| [ d[:decade], d[:id] ] }), include_blank: "Any"
-			.filter
-				A movie you've already seen?
-				.radio_list
-					.radio_list_item
-						=radio_button "post", "seen", "0", {checked: true}
-						Whatever, man. One day we all die, anyway.
-					.radio_list_item
-						=radio_button "post", "seen", "1"
-						I want to expand my horizons!
-					.radio_list_item
-						=radio_button "post", "seen", "2"
-						Give me comfort food.
-
+.half.left
+	= render partial: "random/random_selection"
+.half.right
+	= render partial: "random/random_filters"
 .clear

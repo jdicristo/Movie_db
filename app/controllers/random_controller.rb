@@ -1,5 +1,6 @@
 class RandomController < ApplicationController
 	def show
+		logger.debug(params)
 		get_random_movie
 		get_date_range
 	end
@@ -18,5 +19,13 @@ class RandomController < ApplicationController
 		(first..last).step(10) do |decade|
 			@decade_array.push({"id": decade, "decade": decade.to_s+"s"})
 		end
+	end
+
+	def filter
+		redirect_to diceroll_path(filter_params)
+	end
+
+	def filter_params
+		params.require(:filter).permit(:rating, :director, :year, :subtitles, :seen)
 	end
 end
