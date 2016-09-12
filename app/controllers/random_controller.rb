@@ -5,7 +5,7 @@ class RandomController < ApplicationController
 	end
 
 	def get_random_movie
-		movie_list = Movie.all
+		movie_list = Movie.all.to_a
 		movie_list = filter_director(movie_list)
 		movie_list = filter_rating(movie_list)
 		movie_list = filter_year(movie_list)
@@ -15,23 +15,22 @@ class RandomController < ApplicationController
 	end
 
 	def filter_director(list)
-		list
-		#param_present(:director) ? list.joins(MovieDirector.all).where(director_id: params[:director]) : list
+		param_present(:director) ? list.select{ |m| m.director_exists?(params[:director]) } : list
 	end
 	
 	def filter_rating(list)
-		param_present(:rating) ? list.where(rating_id: params[:rating].to_i) : list
+		param_present(:rating) ? list.select{ |m| m.rating_id == params[:rating].to_i } : list
 	end
 
 	def filter_year(list)
-		param_present(:year) ? list.where("year >= ?", params[:year]).where("year < ?", params[:year].to_i + 10) : list
+		param_present(:year) ? list.select{ |m| m.year >= params[:year].to_i && m.year < params[:year].to_i + 10 } : list
 	end
 		
 	def filter_subtitles(list)
 		if params[:subtitles] == "1"
-			list.where(subtitles: false)
+			list.select{ |m| !m.subtitles }
 		elsif params[:subtitles] == "2"
-			list.where(subtitles: true)
+			list.select{ |m| m.subtitles }
 		else
 			list
 		end
@@ -39,10 +38,10 @@ class RandomController < ApplicationController
 	end
 
 	def filter_seen(list)
-		if params[:subtitles] == "1"
-			list.where(subtitles: false)
-		elsif params[:subtitles] == "2"
-			list.where(subtitles: true)
+		if params[:seen] == "1"
+			list.select{ |m| !m.seen }
+		elsif params[:seen] == "2"
+			list.select{ |m| m.seen }
 		else
 			list
 		end

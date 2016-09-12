@@ -16,6 +16,7 @@
 
 body {
 	font-family: "Helvetica";
+	margin: 0;
 }
 
 h1 {
@@ -49,6 +50,23 @@ h2 {
 	font-size: 20px;
 	padding: 15px 30px;
 	text-decoration: none;
+}
+
+#header {
+	background-color: #064F40;
+	color: #21B6A8;
+	padding: 25px 15px;
+}
+
+#header #header_back {
+	font-size: 25px;
+	font-weight: 100;
+}
+
+#header #header_lbl {
+	font-size: 30px;
+	font-weight: 900;
+	text-align: center;
 }
 
 .list_title {
