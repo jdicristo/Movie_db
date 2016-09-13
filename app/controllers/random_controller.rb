@@ -1,7 +1,7 @@
 class RandomController < ApplicationController
 	def show
 		get_random_movie
-		get_date_range
+		get_dropdownlist_values
 	end
 
 	def get_random_movie
@@ -12,6 +12,12 @@ class RandomController < ApplicationController
 		movie_list = filter_subtitles(movie_list)
 		movie_list = filter_seen(movie_list)
 		@movie = movie_list.count == 0 ? false : movie_list[rand(0..movie_list.count-1)]
+	end
+
+	def get_dropdownlist_values
+		get_director_list
+		get_year_list
+		get_rating_list
 	end
 
 	def filter_director(list)
@@ -47,7 +53,15 @@ class RandomController < ApplicationController
 		end
 	end
 
-	def get_date_range
+	def get_director_list
+		@directors = Director.all.sort_by { |d| d[:name].sub(/^the /i,"").downcase }
+	end
+
+	def get_rating_list
+		@ratings = Rating.all
+	end
+
+	def get_year_list
 		movies_by_year = Movie.all.order(:year)
 		first = movies_by_year.first.year/10*10
 		last = movies_by_year.last.year/10*10

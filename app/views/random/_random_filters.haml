@@ -3,21 +3,21 @@
 	=form_tag filter_path, method: :get, id: "controls" do
 		.filter
 			Rating: 
-			=select_tag "filter[rating]", options_from_collection_for_select(Rating.all, "id", "rating", params[:rating]), include_blank: "Any"
+			=select_tag "filter[rating]", options_from_collection_for_select(@ratings, "id", "rating", params[:rating]), include_blank: "Any"
 		.filter
 			Director: 
-			=select_tag "filter[director]", options_from_collection_for_select(Director.all, "id", "name", params[:director]), include_blank: "Any"
+			=select_tag "filter[director]", options_from_collection_for_select(@directors, "id", "name", params[:director]), include_blank: "Any"
 		.filter
 			Subtitles?
 			.radio_list
 				.radio_list_item
-					=radio_button "filter", "subtitles", "0"
+					=radio_button "filter", "subtitles", "0", {checked: params[:subtitles] == "0"}
 					Don't care
 				.radio_list_item
-					=radio_button "filter", "subtitles", "1"
+					=radio_button "filter", "subtitles", "1", {checked: params[:subtitles] == "1"}
 					No
 				.radio_list_item
-					=radio_button "filter", "subtitles", "2"
+					=radio_button "filter", "subtitles", "2", {checked: params[:subtitles] == "2"}
 					Yes
 		.filter
 			Year: 
@@ -26,12 +26,12 @@
 			A movie you've already seen?
 			.radio_list
 				.radio_list_item
-					=radio_button "filter", "seen", "0"
+					=radio_button "filter", "seen", "0", {checked: params[:seen] == "0"}
 					Don't care
 				.radio_list_item
-					=radio_button "filter", "seen", "1"
+					=radio_button "filter", "seen", "1", {checked: params[:seen] == "1"}
 					No
 				.radio_list_item
-					=radio_button "filter", "seen", "2"
+					=radio_button "filter", "seen", "2", {checked: params[:seen] == "2"}
 					Yes
-		=submit_tag "Roll the Dice"
+		=submit_tag "Roll the Dice", class: "btn", style: "text-align: center;"

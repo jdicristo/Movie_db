@@ -9,10 +9,17 @@
   </head>
 
   <body>
-  	<div id="header">
-      <div id="header_back" class="left">&lt;&lt; Back</div>
-      <div id="header_lbl">Roll the dice</div>
-  	</div>
-    <%= yield %>
+    <% if params[:controller] != "home" %>
+    	<div id="header">
+        <a class="header-btn alt" href="/">Home</a>
+        <a class="header-btn" href="/diceroll">Roll the Dice</a>
+        <a class="header-btn" href="/movies">Movies</a>
+        <a class="header-btn" href="/directors">Directors</a>
+        <a class="header-btn" href="/tags">Tags</a>
+    	</div>
+    <% end %>
+    <div id="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
