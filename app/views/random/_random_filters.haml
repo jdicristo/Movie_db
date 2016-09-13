@@ -8,30 +8,17 @@
 			Director: 
 			=select_tag "filter[director]", options_from_collection_for_select(@directors, "id", "name", params[:director]), include_blank: "Any"
 		.filter
-			Subtitles?
-			.radio_list
-				.radio_list_item
-					=radio_button "filter", "subtitles", "0", {checked: params[:subtitles] == "0"}
-					Don't care
-				.radio_list_item
-					=radio_button "filter", "subtitles", "1", {checked: params[:subtitles] == "1"}
-					No
-				.radio_list_item
-					=radio_button "filter", "subtitles", "2", {checked: params[:subtitles] == "2"}
-					Yes
+			Subtitles: 
+			=select_tag "filter[subtitles]", options_for_select(@bool_list, params[:subtitles])
 		.filter
 			Year: 
 			=select_tag "filter[year]", options_for_select(@decade_array.collect {|d| [ d[:decade], d[:id] ] }, params[:year]), include_blank: "Any"
 		.filter
-			A movie you've already seen?
-			.radio_list
-				.radio_list_item
-					=radio_button "filter", "seen", "0", {checked: params[:seen] == "0"}
-					Don't care
-				.radio_list_item
-					=radio_button "filter", "seen", "1", {checked: params[:seen] == "1"}
-					No
-				.radio_list_item
-					=radio_button "filter", "seen", "2", {checked: params[:seen] == "2"}
-					Yes
+			Seen Before: 
+			=select_tag "filter[seen]", options_for_select(@bool_list, params[:seen])
+		.filter
+			Runtime: from
+			=select_tag "filter[runtime_min]", options_for_select(@runtimes_min, params[:runtime_min])
+			&nbsp;to&nbsp; 
+			=select_tag "filter[runtime_max]", options_for_select(@runtimes_max, params[:runtime_max])
 		=submit_tag "Roll the Dice", class: "btn", style: "text-align: center;"
