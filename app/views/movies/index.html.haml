@@ -1,17 +1,18 @@
 .list_title
 	%h1="Movies"
 =link_to "+ Add new movie", new_movie_path, id: "add_movie_btn"
-%table.list{cellspacing: 0}
+=will_paginate @movies
+%table.list.fullwidth{cellspacing: 0}
 	%tr.header_row
-		%th="Movie Title"
+		%th=sortable "movie_title", "Movie Title"
 		%th="Dir."
-		%th="Year"
-		%th="Rating"
-		%th="Runtime"
-		%th="BP Winner"
-		%th="BP Nominee"
-		%th="Seen"
-		%th="Subtitles"
+		%th=sortable "year", "Year"
+		%th=sortable "rating", "Rating"
+		%th=sortable "runtime", "Runtime"
+		%th=sortable "best_picture_winner", "BP Winner"
+		%th=sortable "best_picture_nominee", "BP Nominee"
+		%th=sortable "seen", "Seen"
+		%th=sortable "subtitles", "Subtitles"
 		%th="Tags"
 		%th
 	-@movies.each do |movie|
