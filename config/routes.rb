@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     	get 'show_list'
   	end
   end
-  resources :directors, :tags
+  resources :directors, :tags, :movie_directors
 end

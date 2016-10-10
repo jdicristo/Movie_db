@@ -7,7 +7,8 @@ class MoviesController < ApplicationController
 	end
 
 	def create
-		Movie.create(movie_params);
+		m = Movie.create(movie_params)
+		MovieDirector.create({movie_id: m.id, director_id: params[:movie_director][:director_id]})
 		redirect_to movies_path
 	end
 
@@ -22,6 +23,10 @@ class MoviesController < ApplicationController
 
 	def movie_params
 		params.require(:movie).permit(:movie_title, :year, :best_picture_winner, :best_picture_nominee, :runtime, :seen, :subtitles, :rating_id)
+	end
+
+	def director_params
+		params.require(:movie_director).permit(:director_id)
 	end
 
 	def sort_list
