@@ -1,0 +1,12 @@
+%h1#movie_header="Edit Director"
+=form_for @director, html: { class: "center", id: "new_director" } do |d|
+	.attributes
+		.attribute
+			.one_quarter="Name"
+			=d.text_field :name, class: "one_half"
+	.form_button
+		=d.submit "Save", class: "btn", id: "save_director"
+#movies_list
+	%h2="Movies"
+	-@director.movies.sort_by { |m| m[:movie_title].sub(/^the /i,"") }.each do |m|
+		.director_movie="#{m.movie_title}"

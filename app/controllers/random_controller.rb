@@ -9,8 +9,8 @@ class RandomController < ApplicationController
 		movie_list = movie_list.select{ |m| m.director_exists?(params[:director]) } if param_present(:director)
 		movie_list = movie_list.select{ |m| m.rating_id == params[:rating].to_i } if param_present(:rating)
 		movie_list = movie_list.select{ |m| m.year >= params[:year].to_i && m.year < params[:year].to_i + 10 } if param_present(:year)
-		movie_list = filter_subtitles(movie_list) if param_present(:subtitles)
-		movie_list = filter_seen(movie_list) if param_present(:seen)
+		movie_list = filter_bool(movie_list, :subtitles) if param_present(:subtitles)
+		movie_list = filter_bool(movie_list, :seen) if param_present(:seen)
 		movie_list = filter_runtime(movie_list) if param_present(:runtime_min)
 		@movie = movie_list.count == 0 ? false : movie_list[rand(0..movie_list.count-1)]
 	end
@@ -23,23 +23,12 @@ class RandomController < ApplicationController
 		@runtimes_min = [["Any",0], ["30 minutes",30], ["1 hour", 60], ["1 hour 30 minutes", 90], ["2 hours", 120], ["2 hours 30 minutes", 150], ["3 hours", 180]]
 		@runtimes_max = [["Any",999], ["30 minutes",30], ["1 hour", 60], ["1 hour 30 minutes", 90], ["2 hours", 120], ["2 hours 30 minutes", 150], ["3 hours", 180]]
 	end
-		
-	def filter_subtitles(list)
-		if params[:subtitles] == "1"
-			list.select{ |m| !m.subtitles }
-		elsif params[:subtitles] == "2"
-			list.select{ |m| m.subtitles }
-		else
-			list
-		end
 
-	end
-
-	def filter_seen(list)
-		if params[:seen] == "1"
-			list.select{ |m| !m.seen }
-		elsif params[:seen] == "2"
-			list.select{ |m| m.seen }
+	def filter_bool(list, attribute)
+		if params[attribute] == "1"
+			list.select{ |m| !m[attribute] }
+		elsif params[attribute] == "2"
+			list.select{ |m| m[attribute] }
 		else
 			list
 		end

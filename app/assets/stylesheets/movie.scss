@@ -50,10 +50,6 @@ $light-teal: #21B6A8;
 		text-align: center;
 	}
 
-	.form_button {
-		text-align: center;
-	}
-
 	.one_quarter { 
 		display: inline-block;
 		width: 24%;
@@ -66,4 +62,8 @@ $light-teal: #21B6A8;
 		display: inline-block;
 		width: 49%;
 	}
+}
+
+.form_button {
+	text-align: center;
 }

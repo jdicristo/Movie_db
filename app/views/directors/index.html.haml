@@ -1,0 +1,13 @@
+.list_title
+	%h1="Directors"
+=link_to "+ Add new director", new_director_path, id: "add_director_btn"
+%table.list{cellspacing: 0}
+	%tr.header_row
+		%th="Name"
+		%th="# of Movies"
+		%th
+	-@directors.each do |director|
+		%tr
+			%td=link_to "#{director.name}", edit_director_path(director.id)
+			%td="#{MovieDirector.where(director_id: director.id).count}"
+			%td=link_to 'Delete', director,  method: :delete, data: { confirm: 'Are you sure?' }

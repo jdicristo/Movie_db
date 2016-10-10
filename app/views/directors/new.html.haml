@@ -1,0 +1,8 @@
+%h1#director_header="Add a Movie"
+=form_for Director.new, html: { class: "center", id: "new_director" } do |d|
+	.attributes
+		.attribute
+			.one_quarter="Name"
+			=d.text_field :name, class: "one_half"
+	.form_button
+		=d.submit "Add", class: "btn", id: "add_director"
