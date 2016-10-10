@@ -17,6 +17,12 @@
 			Seen Before: 
 			=select_tag "filter[seen]", options_for_select(@bool_list, params[:seen])
 		.filter
+			Best Picture Winner: 
+			=select_tag "filter[best_picture_winner]", options_for_select(@bool_list, params[:best_picture_winner])
+		.filter
+			Best Picture Nominee: 
+			=select_tag "filter[best_picture_nominee]", options_for_select(@bool_list, params[:best_picture_nominee])
+		.filter
 			Runtime: from
 			=select_tag "filter[runtime_min]", options_for_select(@runtimes_min, params[:runtime_min])
 			&nbsp;to&nbsp; 

@@ -1,9 +1,10 @@
 .list_title
 	%h1="Directors"
 =link_to "+ Add new director", new_director_path, id: "add_director_btn"
+=will_paginate @directors
 %table.list{cellspacing: 0}
 	%tr.header_row
-		%th="Name"
+		%th=sortable "name", "Name"
 		%th="# of Movies"
 		%th
 	-@directors.each do |director|
