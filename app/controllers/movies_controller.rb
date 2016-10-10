@@ -1,6 +1,9 @@
 class MoviesController < ApplicationController	
+	helper_method :sort_column, :sort_direction
+
 	def index
-		@movies = Movie.all.sort_by { |m| m[:movie_title].sub(/^the /i,"").downcase }
+		#@movies = Movie.all.sort_by { |m| m[:movie_title].sub(/^the /i,"").downcase }.paginate(page: params[:page], per_page: 2)
+		@movies = Movie.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 10)
 	end
 
 	def new
@@ -29,14 +32,20 @@ class MoviesController < ApplicationController
 		params.require(:movie_director).permit(:director_id)
 	end
 
-	def sort_list
-		logger.debug(params)
-	end
-
 	def destroy
 	    @movie = Movie.find(params[:id])
 	    @movie.destroy
 
 	    redirect_to movies_path
+	end
+
+	private 
+
+	def sort_column
+		Movie.column_names.include?(params[:sort]) ? params[:sort] : "movie_title"
+	end
+
+	def sort_direction
+		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 	end
 end

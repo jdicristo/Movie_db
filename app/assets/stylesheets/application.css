@@ -88,6 +88,10 @@ table.list {
     margin: 0 auto;
 }
 
+table.list.fullwidth {
+	width: 100%;
+}
+
 table.list th {
 	background: #064F40;
 	border: 2px solid #21B6A8;
@@ -95,6 +99,18 @@ table.list th {
 	border-spacing: 0px;
 	color: #21B6A8;
 	padding: 20px;
+}
+
+table.list th a {
+	color: #21B6A8;
+}
+
+table.list th .asc {
+	background-image: url(/images/arrow_up.gif);
+}
+
+table.list th .desc {
+	background-image: url(/images/arrow_down.gif);
 }
 
 table.list td {
