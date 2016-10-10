@@ -13,7 +13,7 @@ class Movie < ApplicationRecord
 		response["Poster"] ? response["Poster"] : false
 	end
 
-	def director_arr
+	def directors
 		directors = []
 		MovieDirector.where(movie_id: id).each do |md|
 			d = md.director
@@ -23,7 +23,7 @@ class Movie < ApplicationRecord
 	end
 
 	def director_exists?(director_id)
-		director_arr.include?(Director.find(director_id))
+		directors.include?(Director.find(director_id))
 	end
 
 	def winner_is_nominee

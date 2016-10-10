@@ -4,6 +4,10 @@
 		.attribute
 			.one_quarter="Title"
 			=m.text_field :movie_title, class: "one_half"
+		=fields_for :movie_director do |md|
+			.attribute
+				.one_quarter="Director"
+				=md.select :director_id, options_from_collection_for_select(Director.all.order(:name), "id", "name", params[:director_id]), class: "one_half"
 		.attribute
 			.one_quarter="Year"
 			=m.number_field :year, in: 1888..Time.now.year, class: "one_quarter"
