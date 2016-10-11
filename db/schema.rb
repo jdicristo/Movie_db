@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20169909213106) do
     t.string   "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "title"
   end
 
 end

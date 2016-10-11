@@ -24,6 +24,10 @@ class MoviesController < ApplicationController
 		redirect_to movies_path
 	end
 
+	def manage_tags
+		@movie = Movie.find(params[:id])
+	end
+
 	def movie_params
 		params.require(:movie).permit(:movie_title, :year, :best_picture_winner, :best_picture_nominee, :runtime, :seen, :subtitles, :rating_id)
 	end

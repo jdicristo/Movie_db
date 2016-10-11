@@ -28,5 +28,5 @@
 			%td=movie.best_picture_nominee ? "Yes" : "No"
 			%td=movie.seen ? "Yes" : "No"
 			%td=movie.subtitles ? "Yes" : "No"
-			%td="View"
+			%td=link_to "View", "/movies/#{movie.id}/tags"
 			%td=link_to 'Delete', movie,  method: :delete, data: { confirm: 'Are you sure?' }
