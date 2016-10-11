@@ -106,11 +106,11 @@ table.list th a {
 }
 
 table.list th .asc {
-	background-image: url(/images/arrow_up.gif);
+	background-image: url("/assets/arrow_up.gif");
 }
 
 table.list th .desc {
-	background-image: url(/images/arrow_down.gif);
+	background-image: url("/assets/arrow_down.gif");
 }
 
 table.list td {

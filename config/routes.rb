@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :movies do
 	collection do
-    	get 'show_list'
+    	get '/:id/tags', to: 'movies#manage_tags'
   	end
   end
   resources :directors, :tags, :movie_directors
