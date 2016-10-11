@@ -4,6 +4,7 @@
 		.attribute
 			.one_quarter="Name"
 			=d.text_field :name, class: "one_half"
+		=link_to 'Delete', @director,  method: :delete, data: { confirm: 'Are you sure?' }
 	.form_button
 		=d.submit "Save", class: "btn", id: "save_director"
 #movies_list
