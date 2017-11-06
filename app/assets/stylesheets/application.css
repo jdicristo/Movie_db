@@ -126,3 +126,7 @@ table.list td {
 table.list td a {
 	color: #064F40;
 }
+
+.checkbox { 
+	padding-bottom: 5px;
+}

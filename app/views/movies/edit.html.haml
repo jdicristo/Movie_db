@@ -27,4 +27,4 @@
 			=m.check_box :best_picture_winner, class: "one_quarter"
 		=link_to 'Delete', @movie,  method: :delete, data: { confirm: 'Are you sure?' }
 	.form_button
-		=m.submit "Save", class: "btn", id: "save_movie"
+		=m.submit "Save", class: "btn", id: "save_movie", name: "movie_details"

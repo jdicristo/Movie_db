@@ -1,8 +1,9 @@
 %h1#movie_header="#{@movie.movie_title}"
 =form_for @movie, html: { class: "center", id: "edit_tag" } do |m|
 	.checkbox_collection
-		-Tag.all.order(:tag_name) do |t|
+		-Tag.all.order(:tag_name).each do |t|
 			.checkbox
-				=check_box_tag "#{t.id}", "#{t.tag_name}", MovieTag.where(movie_id: m.id, tag_id: t.id).count > 0
+				=check_box_tag "movie_tags[]", t.id, MovieTag.where(movie_id: @movie.id, tag_id: t.id).count > 0
+				#{t.tag_name}
 	.form_button
-		=m.submit "Save", class: "btn", id: "save_tag"
+		=m.submit "Save", class: "btn", id: "save_tag", name: "tags"

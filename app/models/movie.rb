@@ -1,6 +1,7 @@
 require 'httparty'
 class Movie < ApplicationRecord
 	has_many :movie_director
+	has_many :tag
 	belongs_to :rating
 	validates_numericality_of :year, greater_than: 1888, less_than: Time.now.year
 	validates_numericality_of :runtime, greater_than: 0
@@ -9,7 +10,7 @@ class Movie < ApplicationRecord
 	after_save :winner_is_nominee
 
 	def poster
-		response = HTTParty.get("http://www.omdbapi.com/?t=" + URI.encode(movie_title) + "&y=" + year.to_s)
+		response = HTTParty.get("http://www.omdbapi.com/?apikey=99f518b9&t=" + URI.encode(movie_title) + "&y=" + year.to_s)
 		response["Poster"] ? response["Poster"] : false
 	end
 
