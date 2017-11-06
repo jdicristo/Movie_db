@@ -20,7 +20,19 @@ class MoviesController < ApplicationController
 	end
 
 	def update
+		save_tags if params["tags"].present?
+		save_movie if params["movie_details"].present?
+	end
+
+	def save_movie
 		Movie.find(params[:id]).update!(movie_params)
+		redirect_to movies_path
+	end
+
+	def save_tags
+		params["movie_tags"].each do |tag_id|
+			MovieTag.create({movie_id: params[:id], tag_id: tag_id})
+		end
 		redirect_to movies_path
 	end
 
