@@ -8,5 +8,12 @@ Rails.application.routes.draw do
     	get '/:id/tags', to: 'movies#manage_tags'
   	end
   end
-  resources :directors, :tags, :movie_directors
+
+  resources :tags do
+  	collection do
+  		get '/:str/search', to: 'tags#search'
+  	end
+  end
+
+  resources :directors, :movie_directors
 end

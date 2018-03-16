@@ -27,4 +27,7 @@
 			=select_tag "filter[runtime_min]", options_for_select(@runtimes_min, params[:runtime_min])
 			&nbsp;to&nbsp; 
 			=select_tag "filter[runtime_max]", options_for_select(@runtimes_max, params[:runtime_max])
+		.filter
+			Tags: 
+			=text_field_tag "random-tags"
 		=submit_tag "Roll the Dice", class: "btn", style: "text-align: center;"
