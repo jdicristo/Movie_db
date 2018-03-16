@@ -1,0 +1,14 @@
+.list_title
+	%h1="Tags"
+=link_to "+ Add new tag", new_tag_path, id: "add_tag_btn"
+=will_paginate @tags
+%table.list{cellspacing: 0}
+	%tr.header_row
+		%th=sortable "tag_name", "Tag"
+		%th="# of Movies"
+		%th
+	-@tags.each do |tag|
+		%tr
+			%td=link_to "#{tag.tag_name}", edit_tag_path(tag.id)
+			%td="#{MovieTag.where(tag_id:tag.id).count}"
+			%td=link_to 'Delete', tag,  method: :delete, data: { confirm: 'Are you sure?' }

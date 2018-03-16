@@ -1,0 +1,67 @@
+// Place all the styles related to the Movie controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$dark-teal: #064F40;
+$light-teal: #21B6A8;
+
+#director_header {
+	text-align: center;
+}
+
+#add_director_btn {
+	color: $dark-teal;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+#movies_list {
+	.director_movie { 
+		font-size: 20px;
+		text-align: center;
+	}
+}
+
+#new_director {
+	font-size: 20px;
+	margin: 0 auto;
+	text-align: left;
+	width: 50%;
+
+	label {
+		display: inline-block;
+	}
+
+	input[type="text"], input[type="number"], select {
+		font-size: 20px;
+		font-weight: 300;
+		border-radius: 5px;
+    	border: none;
+    	border: solid 1px #ccc;
+    	padding: 5px;
+	}
+
+	.attributes {
+		margin: 80px 0 50px;
+		
+		.attribute { margin-bottom: 10px; }
+	}
+
+	#add_director {
+		text-align: center;
+	}
+
+	.form_button {
+		text-align: center;
+	}
+
+	.one_quarter { 
+		display: inline-block;
+		width: 24%;
+	}
+
+	.one_half { 
+		display: inline-block;
+		width: 49%;
+	}
+}

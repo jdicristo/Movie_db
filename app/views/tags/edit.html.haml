@@ -1,0 +1,9 @@
+%h1#movie_header="Edit Tag"
+=form_for @tag, html: { class: "center", id: "edit_tag" } do |t|
+	.attributes
+		.attribute
+			.one_quarter="Tag Name"
+			=t.text_field :tag_name, class: "one_half"
+		=link_to 'Delete', @tag,  method: :delete, data: { confirm: 'Are you sure?' }
+	.form_button
+		=t.submit "Save", class: "btn", id: "save_tag"

@@ -1,0 +1,8 @@
+%h1#director_header="Add a Tag"
+=form_for Tag.new, html: { class: "center", id: "new_tag" } do |t|
+	.attributes
+		.attribute
+			.one_quarter="Tag Name"
+			=t.text_field :tag_name, class: "one_half"
+	.form_button
+		=t.submit "Add", class: "btn", id: "add_tag"
