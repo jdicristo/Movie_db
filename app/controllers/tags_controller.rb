@@ -33,6 +33,11 @@ class TagsController < ApplicationController
 	    redirect_to tags_path
 	end
 
+	def search
+		tags = Tag.where("tag_name LIKE ?", "#{params[:str]}%").order('tag_name ASC').limit(5).map{ |t| [t.tag_name, t.id] }
+		render json: {success: true, data: tags}
+	end
+
 	private 
 
 	def sort_column
